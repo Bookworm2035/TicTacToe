@@ -11,12 +11,20 @@ will:
 • Check for a winner by calling the method in the supporting class, and notify the players 
 when a win has occurred and which player won the game */
 //change this to 10 so we can use 1-9 positions and 0 will not be used 
+
 char[] board = new char[10];
-// Assign values to the spots in the array
-for (int i = 0; i <= 9; i++)
+
+for (int i = 0; i < board.Length; i++)
 {
-    board[i] = Convert.ToChar(i); // You can replace 'X' with the desired initial value
+    board[i] = (char)(i + '0');  // Convert the integer value to its character representation
 }
+
+//char[] board = new char[10];
+//// Assign values to the spots in the array
+//for (int i = 0; i <= 9; i++)
+//{
+//    board[i] = Convert.ToChar(i); // You can replace 'X' with the desired initial value
+//}
 Console.WriteLine(board[1]);
 Console.WriteLine(board[2]);
 
@@ -27,7 +35,7 @@ bool GameWon = false;
 Class1 c = new Class1();
 
 // Call PrintBoard method
-c.PrintBoard(board);
+Console.WriteLine(c.PrintBoard(board));
 
 
 while (GameWon == false) {
@@ -38,6 +46,7 @@ while (GameWon == false) {
 
     Console.Write("Player X will start. Select your move, insert a number 1-9: ");
     moveChoice = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(c.PrintBoard(board));
     //debug check variable value
     Console.WriteLine(moveChoice);
 
