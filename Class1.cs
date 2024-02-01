@@ -15,16 +15,16 @@ namespace TicTacToe
          */
     internal class Class1
     {
-        public char[] PrintBoard(char[] board)
+        public string PrintBoard(char[] board)
         {
+            string boardOutput = "";
+            boardOutput = " " + board[1] + " | " + board[2] + " | " + board[3] + "  \n" +
+                        "---|---|--- \n" +
+                        " " + board[4] + " | " + board[5] + " | " + board[6] + " \n" +
+                        "---|---|--- \n" + 
+                        " " + board[7] + " | " + board[8] + " | " + board[9] + " ";
 
-            Console.WriteLine(" " + board[0] + " | " + board[1] + " | " + board[2] + " ");
-            Console.WriteLine("---|---|---");
-            Console.WriteLine(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
-            Console.WriteLine("---|---|---");
-            Console.WriteLine(" " + board[6] + " | " + board[7] + " | " + board[8] + " ");
-
-            return board;
+            return boardOutput;
         }
 
         public string WhoWon(char[] board)
@@ -32,9 +32,9 @@ namespace TicTacToe
             string result = "";
 
             string[] winningCombinations = {
-                "012", "345", "678",  // Horizontal
-                "036", "147", "258",  // Vertical
-                "048", "246"          // Diagonal
+                "123", "456", "789",  // Horizontal
+                "147", "258", "369",  // Vertical
+                "159", "357"          // Diagonal
             };
 
             foreach (string combination in winningCombinations)
