@@ -32,9 +32,9 @@ namespace TicTacToe
             string result = "";
 
             string[] winningCombinations = {
-                "012", "345", "678",  // Horizontal
-                "036", "147", "258",  // Vertical
-                "048", "246"          // Diagonal
+                "123", "456", "789",  // Horizontal
+                "147", "258", "369",  // Vertical
+                "159", "357"          // Diagonal
             };
 
             foreach (string combination in winningCombinations)
