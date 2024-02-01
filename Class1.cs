@@ -15,16 +15,16 @@ namespace TicTacToe
          */
     internal class Class1
     {
-        public char[] PrintBoard(char[] board)
+        public string PrintBoard(char[] board)
         {
+            string boardOutput = "";
+            boardOutput = " " + board[0] + " | " + board[1] + " | " + board[2] + "  \n" +
+                        "---|---|--- \n" +
+                        " " + board[3] + " | " + board[4] + " | " + board[5] + " \n" +
+                        "---|---|--- \n" + 
+                        " " + board[6] + " | " + board[7] + " | " + board[8] + " ";
 
-            Console.WriteLine(" " + board[0] + " | " + board[1] + " | " + board[2] + " ");
-            Console.WriteLine("---|---|---");
-            Console.WriteLine(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
-            Console.WriteLine("---|---|---");
-            Console.WriteLine(" " + board[6] + " | " + board[7] + " | " + board[8] + " ");
-
-            return board;
+            return boardOutput;
         }
 
         public string WhoWon(char[] board)
