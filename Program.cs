@@ -19,12 +19,7 @@ for (int i = 0; i < board.Length; i++)
     board[i] = (char)(i + '0');  // Convert the integer value to its character representation
 }
 
-//char[] board = new char[10];
-//// Assign values to the spots in the array
-//for (int i = 0; i <= 9; i++)
-//{
-//    board[i] = Convert.ToChar(i); // You can replace 'X' with the desired initial value
-//}
+//debug statements can be deleted
 Console.WriteLine(board[1]);
 Console.WriteLine(board[2]);
 
@@ -46,6 +41,7 @@ while (GameWon == false) {
 
     Console.Write("Player X will start. Select your move, insert a number 1-9: ");
     moveChoice = Convert.ToInt32(Console.ReadLine());
+
     Console.WriteLine(c.PrintBoard(board));
     //debug check variable value
     Console.WriteLine(moveChoice);
@@ -58,6 +54,8 @@ while (GameWon == false) {
     else {
         board[moveChoice] = 'O';
     }
+    //
+    c.WhoWon();
 
     //other players turn 
     PlayerX = false;
