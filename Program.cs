@@ -12,68 +12,52 @@ will:
 when a win has occurred and which player won the game */
 //change this to 10 so we can use 1-9 positions and 0 will not be used 
 
-char[] board = new char[10];
-
-for (int i = 0; i < board.Length; i++)
+class Program
 {
-    board[i] = (char)(i + '0');  // Convert the integer value to its character representation
+
+    static void Main()
+    {
+        // Initialize the game board
+        char[] board = new char[10];
+        for (int i = 0; i < board.Length; i++)
+        {
+            board[i] = (char)(i + '0');// Convert the integer value to its character representation
+        }
+
+        // Create an instance of Class1
+        Class1 c = new Class1();
+
+        // Print the initial board
+        Console.WriteLine(c.PrintBoard(board));
+
+        int moveChoice;
+        bool GameWon = false;
+        bool PlayerX = true;
+
+        while (GameWon == false)
+        {
+            Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
+            moveChoice = Convert.ToInt32(Console.ReadLine());
+
+            // Update the game board
+            board[moveChoice] = (PlayerX ? 'X' : 'O');
+
+            // Print the updated board
+            Console.WriteLine(c.PrintBoard(board));
+
+            // Check for a winner
+            string result = c.WhoWon(board);
+            Console.WriteLine(result);
+
+            // If there is a winner, end the game
+            if (result.StartsWith("Player"))
+            {
+                GameWon = true;
+            }
+
+            // Switch to the other player's turn
+            PlayerX = !PlayerX;
+        }
+    }
 }
 
-//char[] board = new char[10];
-//// Assign values to the spots in the array
-//for (int i = 0; i <= 9; i++)
-//{
-//    board[i] = Convert.ToChar(i); // You can replace 'X' with the desired initial value
-//}
-Console.WriteLine(board[1]);
-Console.WriteLine(board[2]);
-
-int moveChoice2;
-int moveChoice;
-bool GameWon = false;
-// Create an instance of Class1
-Class1 c = new Class1();
-
-// Call PrintBoard method
-Console.WriteLine(c.PrintBoard(board));
-
-
-while (GameWon == false) {
-    //PUT THE LOOP ALL
-
-    // Ask for choice and update array
-    bool PlayerX = true;
-
-    Console.Write("Player X will start. Select your move, insert a number 1-9: ");
-    moveChoice = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine(c.PrintBoard(board));
-    //debug check variable value
-    Console.WriteLine(moveChoice);
-
-    //add X or O to array spot based on player name
-    //numbers[positionToAdd] = valueToAdd;
-    if (PlayerX == true) {
-       board[moveChoice] = 'X';
-    }
-    else {
-        board[moveChoice] = 'O';
-    }
-
-    //other players turn 
-    PlayerX = false;
-    Console.Write("Player O's turn. Select your move, insert a number 1-9: ");
-    moveChoice2 = Convert.ToInt32(Console.ReadLine());
-
-    if (PlayerX == true)
-    {
-        board[moveChoice2] = 'X';
-    }
-    else
-    {
-        board[moveChoice2] = 'O';
-    }
-    Console.WriteLine(board);
-}
-
-//after there is a winner
-//display stuff here :) 

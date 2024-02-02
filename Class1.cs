@@ -32,16 +32,20 @@ namespace TicTacToe
             string result = "";
 
             string[] winningCombinations = {
-                "123", "456", "789",  // Horizontal
-                "147", "258", "369",  // Vertical
-                "159", "357"          // Diagonal
+                "012", "345", "678",  // Horizontal
+                "036", "147", "258",  // Vertical
+                "048", "246"          // Diagonal
             };
 
             foreach (string combination in winningCombinations)
             {
-                char first = board[combination[0]];
-                char second = board[combination[1]];
-                char third = board[combination[2]];
+                int index1 = Convert.ToInt32(combination[0].ToString());
+                int index2 = Convert.ToInt32(combination[1].ToString());
+                int index3 = Convert.ToInt32(combination[2].ToString());
+
+                char first = board[index1];
+                char second = board[index2];
+                char third = board[index3];
 
                 if (first == 'X' && second == 'X' && third == 'X')
                 {
