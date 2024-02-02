@@ -2,15 +2,6 @@
 using System.Runtime.InteropServices;
 using TicTacToe;
 
-/* The “Driver” class (the Program.cs class with the main method where the program begins) 
-will:
-• Welcome the user to the game
-• Create a game board array to store the players’ choices
-• Ask each player in turn for their choice and update the game board array
-• Print the board by calling the method in the supporting class
-• Check for a winner by calling the method in the supporting class, and notify the players 
-when a win has occurred and which player won the game */
-//change this to 10 so we can use 1-9 positions and 0 will not be used 
 
 class Program
 {
@@ -33,9 +24,14 @@ class Program
         int moveChoice;
         bool GameWon = false;
         bool PlayerX = true;
+        int turnCount = 0;
 
         while (GameWon == false)
         {
+            //turn counter for ties
+            turnCount++;
+
+            //turn prompt
             Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
             moveChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -46,7 +42,7 @@ class Program
             Console.WriteLine(c.PrintBoard(board));
 
             // Check for a winner
-            string result = c.WhoWon(board);
+            string result = c.WhoWon(board, turnCount);
             Console.WriteLine(result);
 
             // If there is a winner, end the game
@@ -57,6 +53,7 @@ class Program
 
             // Switch to the other player's turn
             PlayerX = !PlayerX;
+            
         }
     }
 }
