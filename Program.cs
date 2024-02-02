@@ -19,6 +19,7 @@ class Program
         Class1 c = new Class1();
 
         // Print the initial board
+        Console.WriteLine("Welcome to Tic-Tac-Toe!");
         Console.WriteLine(c.PrintBoard(board));
 
         int moveChoice= -1;
