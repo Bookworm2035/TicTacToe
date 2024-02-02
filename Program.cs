@@ -46,7 +46,7 @@ class Program
                 if (int.TryParse(input, out moveChoice) && moveChoice >= 1 && moveChoice <= 9)
                 {
                     // Check if the selected position is available
-                    if ( IsMoveValid(board, moveChoice))
+                    if ( Class1.IsMoveValid(board, moveChoice))
                     {
                         validInput = true;
                     }
