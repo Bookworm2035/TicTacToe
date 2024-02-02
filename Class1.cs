@@ -32,10 +32,10 @@ namespace TicTacToe
             string result = "";
 
             string[] winningCombinations = {
-                "012", "345", "678",  // Horizontal
-                "036", "147", "258",  // Vertical
-                "048", "246"          // Diagonal
-            };
+                    "123", "456", "789",  // Horizontal
+                    "147", "258", "369",  // Vertical
+                    "159", "357"          // Diagonal
+                };
 
             foreach (string combination in winningCombinations)
             {
@@ -50,15 +50,23 @@ namespace TicTacToe
                 if (first == 'X' && second == 'X' && third == 'X')
                 {
                     result = "Player X won!";
+                    break; // Exit the loop when a winner is found
                 }
                 else if (first == 'O' && second == 'O' && third == 'O')
                 {
                     result = "Player O won!";
+                    break; // Exit the loop when a winner is found
                 }
                 else
                 {
-                    result = "Next player's turn!";
+                    result = "Tie, play again!";
                 }
+            }
+
+            // If result is still empty, no winner was found in any combination
+            if (result == "")
+            {
+                result = "Next player's turn!";
             }
 
             return result;
