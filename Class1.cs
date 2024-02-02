@@ -15,6 +15,14 @@ namespace TicTacToe
          */
     internal class Class1
     {
+
+        public bool IsMoveValid(char[] board, int position)
+        {
+            return position >= 1 && position <= 9 && board[position] != 'X' && board[position] != 'O';
+        }
+
+
+
         public string PrintBoard(char[] board)
         {
             //create board
@@ -27,7 +35,6 @@ namespace TicTacToe
             //return board
             return boardOutput;
         }
-
         public string WhoWon(char[] board, int turnCount)
         {
             string result = "";

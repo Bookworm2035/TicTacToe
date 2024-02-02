@@ -21,39 +21,73 @@ class Program
         // Print the initial board
         Console.WriteLine(c.PrintBoard(board));
 
-        int moveChoice;
+        int moveChoice= -1;
         bool GameWon = false;
         bool PlayerX = true;
         int turnCount = 0;
+        string input;
+        Console.WriteLine("Welcome to the best ever game of Tic-Tac-Toe");
+
 
         while (GameWon == false)
         {
             //turn counter for ties
             turnCount++;
 
-            //turn prompt
-            Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
-            moveChoice = Convert.ToInt32(Console.ReadLine());
+            // Turn prompt with input validation
+            bool validInput = false;
 
-            // Update the game board
-            board[moveChoice] = (PlayerX ? 'X' : 'O');
-
-            // Print the updated board
-            Console.WriteLine(c.PrintBoard(board));
-
-            // Check for a winner
-            string result = c.WhoWon(board, turnCount);
-            Console.WriteLine(result);
-
-            // If there is a winner, end the game
-            if (result.StartsWith("Player"))
+            while (validInput == false)
             {
-                GameWon = true;
-            }
+                Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
+                input = Console.ReadLine();
 
-            // Switch to the other player's turn
-            PlayerX = !PlayerX;
+                if (int.TryParse(input, out moveChoice) && moveChoice >= 1 && moveChoice <= 9)
+                {
+                    // Check if the selected position is available
+                    if ( IsMoveValid(board, moveChoice))
+                    {
+                        validInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid move. The selected position is already taken. Please choose another position.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a single number between 1 and 9.");
+                }
+
+            }
+         
+            //turn prompt
+            //Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
+            //moveChoice = Convert.ToInt32(Console.ReadLine());
+           
+            // Update the game board
+                board[moveChoice] = (PlayerX ? 'X' : 'O');
+
+                // Print the updated board
+                Console.WriteLine(c.PrintBoard(board));
+
+                // Check for a winner
+                string result = c.WhoWon(board, turnCount);
+                Console.WriteLine(result);
+
+                // If there is a winner, end the game
+                if (result.StartsWith("Player"))
+                {
+                    GameWon = true;
+                }
+
+                // Switch to the other player's turn
+                PlayerX = !PlayerX;
+
             
+          
+           
+   
         }
     }
 }
