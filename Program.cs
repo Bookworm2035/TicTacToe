@@ -60,11 +60,7 @@ class Program
                 }
 
             }
-         
-            //turn prompt
-            //Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
-            //moveChoice = Convert.ToInt32(Console.ReadLine());
-           
+
             // Update the game board
                 board[moveChoice] = (PlayerX ? 'X' : 'O');
 
