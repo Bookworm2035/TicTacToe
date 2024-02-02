@@ -77,6 +77,7 @@ class Program
                     GameWon = true;
                 }
 
+                // If there is a tie, end the game
                 if (result == "Tie, play again!")
                 {
                     break;
