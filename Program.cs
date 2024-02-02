@@ -29,7 +29,7 @@ class Program
         Console.WriteLine("Welcome to the best ever game of Tic-Tac-Toe");
 
 
-        while (GameWon == false)
+        while (!GameWon)
         {
             //turn counter for ties
             turnCount++;
@@ -37,7 +37,7 @@ class Program
             // Turn prompt with input validation
             bool validInput = false;
 
-            while (validInput == false)
+            while (!validInput)
             {
                 Console.Write($"Player {(PlayerX ? 'X' : 'O')}'s turn. Select your move, insert a number 1-9: ");
                 input = Console.ReadLine();
@@ -81,8 +81,12 @@ class Program
                     GameWon = true;
                 }
 
-                // Switch to the other player's turn
-                PlayerX = !PlayerX;
+                if (result == "Tie, play again!")
+                {
+                    break;
+                }
+            // Switch to the other player's turn
+            PlayerX = !PlayerX;
 
             
           
