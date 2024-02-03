@@ -84,11 +84,6 @@ class Program
                 }
             // Switch to the other player's turn
             PlayerX = !PlayerX;
-
-            
-          
-           
-   
         }
     }
 }
